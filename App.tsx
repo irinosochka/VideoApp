@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'react-native-screens';
+import LoginScreen from "./screens/LoginScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+// Stack navigator for processing the auth flow
+const AuthStack = createNativeStackNavigator();
+const AuthNavigator = () => (
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+        <AuthStack.Screen name="Login" component={LoginScreen} />
+    </AuthStack.Navigator>
+);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// Main stack navigator to switch between auth and main
+const RootStack = createNativeStackNavigator();
+const RootNavigator = () => (
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+        <RootStack.Screen name="Auth" component={AuthNavigator} />
+    </RootStack.Navigator>
+);
+
+const App = () => {
+    const isLoggedIn = false;
+
+    return (
+        <NavigationContainer>
+            {isLoggedIn ? <RootNavigator /> : <AuthNavigator />}
+        </NavigationContainer>
+    );
+};
+
+export default App;
