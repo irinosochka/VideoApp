@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking, Image } from 'react-native';
 import {COLORS, FONTS, SIZES} from "../styles/constants";
+import {useAuth} from "../context/AuthContext";
 
 const LoginScreen = ({ navigation }: any) => {
+    const { login } = useAuth();
+
     const handleGuestLogin = () => {
-        navigation.replace('App'); // Navigate to the main app
+        login(); // Update login state
+        setTimeout(() => navigation.navigate('App'), 100); //navigate after delay to be sure that the state has been changed
     };
 
     const openTerms = () => {
@@ -19,11 +23,11 @@ const LoginScreen = ({ navigation }: any) => {
         <View style={styles.container}>
             <Image
                 style={styles.iconLogo}
-                source={require('../assets/logo.png')}
+                source={require('../assets/logo.png')} //TODO change to svg
             />
             <Image
                 style={styles.iconApp}
-                source={require('../assets/app-icon.png')}
+                source={require('../assets/app-icon.png')} //TODO change to svg
             />
             <View style={styles.welcomeView}>
                 <Text style={styles.welcomeText}>
