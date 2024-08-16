@@ -1,11 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, TextInput, ScrollView, SafeAreaView} from 'react-native';
-import CategorySection from "../components/CategorySection";
 import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../assets/icons/search-icon.svg";
-import SettingsIcon from "../assets/icons/settings-icon.svg";
 
-const MainScreen = ({ navigation }: any) => {
+const SearchScreen = ({ navigation }: any) => {
 
     const videos = [
         {
@@ -39,25 +37,9 @@ const MainScreen = ({ navigation }: any) => {
                         placeholderTextColor="#2B2D4299"
                     />
                 </View>
-                <SettingsIcon width={32} height={32}/>
             </View>
             <ScrollView>
-                <CategorySection
-                    categoryName="React Native"
-                    videos={videos}
-                />
-                <CategorySection
-                    categoryName="React"
-                    videos={videos}
-                />
-                <CategorySection
-                    categoryName="Typescript"
-                    videos={videos}
-                />
-                <CategorySection
-                    categoryName="Javascript"
-                    videos={videos}
-                />
+
             </ScrollView>
         </SafeAreaView>
     );
@@ -66,7 +48,7 @@ const MainScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.white,
+        // backgroundColor: COLORS.white,
     },
     header: {
         flexDirection: 'row',
@@ -82,7 +64,6 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 16,
         paddingHorizontal: 7,
-        marginRight: 7,
     },
     textInput: {
         flex: 1,
@@ -93,4 +74,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MainScreen;
+export default SearchScreen;

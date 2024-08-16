@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
     buttonText: {
         color: COLORS.white,
         fontSize: 16,
-        lineHeight: 24,
         letterSpacing: 1,
         fontWeight: '600',
         textAlign: 'center',

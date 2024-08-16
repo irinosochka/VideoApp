@@ -9,6 +9,7 @@ import {AuthProvider, useAuth} from "./context/AuthContext";
 import {COLORS} from "./styles/constants";
 import HomeIcon from './assets/icons/home-icon.svg';
 import SearchIcon from './assets/icons/search-icon.svg';
+import SearchScreen from "./screens/SearchScreen";
 
 // Stack navigator for processing the auth flow
 const AuthStack = createNativeStackNavigator();
@@ -23,31 +24,34 @@ const AppTabs = createBottomTabNavigator();
 const AppNavigator = () => (
     <AppTabs.Navigator
         screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
+            tabBarIcon: ({ color }) => {
                 let IconComponent;
+                const size = 32;
 
                 if (route.name === 'Home') {
                     IconComponent = HomeIcon;
                 } else if (route.name === 'Search') {
                     IconComponent = SearchIcon;
                 }
-                return <IconComponent width={size} height={size} fill={color} />;
+                return <IconComponent width={size} height={size} color={color} />;
             },
-            tabBarActiveTintColor: COLORS.white,
-            tabBarInactiveTintColor: COLORS.secondary,
+            tabBarActiveTintColor: COLORS.secondary,
+            tabBarInactiveTintColor: COLORS.white,
             tabBarStyle: {
                 backgroundColor: COLORS.primary,
+                height: 80,
+                paddingVertical: 10,
             },
             tabBarLabelStyle: {
                 fontSize: 16,
-                lineHeight: 24,
                 fontWeight: '400',
                 letterSpacing: 0.1,
+                paddingTop: 7,
             },
         })}
     >
         <AppTabs.Screen name="Home" component={MainScreen} options={{ headerShown: false }}/>
-        <AppTabs.Screen name="Search" component={MainScreen} options={{ headerShown: false }}/>
+        <AppTabs.Screen name="Search" component={SearchScreen} options={{ headerShown: false }}/>
     </AppTabs.Navigator>
 );
 
