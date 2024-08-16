@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import {COLORS, SIZES} from "../styles/constants";
 import {useAuth} from "../context/AuthContext";
+import LogoIcon from "../assets/logo.svg";
+import AppIcon from "../assets/app-icon.svg"
 
 const LoginScreen = ({ navigation }: any) => {
     const { login } = useAuth();
@@ -21,14 +23,12 @@ const LoginScreen = ({ navigation }: any) => {
 
     return (
         <View style={styles.container}>
-            <Image
-                style={styles.iconLogo}
-                source={require('../assets/logo.png')} //TODO change to svg
-            />
-            <Image
-                style={styles.iconApp}
-                source={require('../assets/app-icon.png')} //TODO change to svg
-            />
+            <View style={styles.iconLogo}>
+                <LogoIcon width={292} height={128}/>
+            </View>
+            <View style={styles.iconApp}>
+                <AppIcon width={128} height={128}/>
+            </View>
             <View style={styles.welcomeView}>
                 <Text style={styles.welcomeText}>
                     Welcome to the best {'\n'}YouTube-based learning application.
@@ -61,15 +61,11 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.primary,
     },
     iconLogo: {
-        width: 292,
-        height: 116,
         position: 'absolute',
         top: 80,
         left: 49,
     },
     iconApp: {
-        width: 128,
-        height: 128,
         position: 'absolute',
         top: 328,
         left: 132,

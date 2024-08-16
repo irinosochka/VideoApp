@@ -2,6 +2,9 @@ import React from 'react';
 import {View, StyleSheet, TextInput, ScrollView} from 'react-native';
 import CategorySection from "../components/CategorySection";
 import {COLORS} from "../styles/constants";
+import SearchIcon from "../assets/icons/search-icon.svg";
+import SettingsIcon from "../assets/icons/settings-icon.svg";
+
 
 
 const MainScreen = ({ navigation }: any) => {
@@ -29,12 +32,16 @@ const MainScreen = ({ navigation }: any) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.searchBarContainer}>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder="Search videos"
-                    placeholderTextColor="#2B2D4299"
-                />
+            <View style={styles.header}>
+                <View style={styles.searchBarContainer}>
+                    <SearchIcon width={24} height={24} />
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder="Search videos"
+                        placeholderTextColor="#2B2D4299"
+                    />
+                </View>
+                <SettingsIcon width={32} height={32}/>
             </View>
             <ScrollView>
                 <CategorySection
@@ -63,20 +70,27 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.white,
     },
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        margin: 16,
+    },
     searchBarContainer: {
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         height: 44,
         borderColor: COLORS.secondary,
         borderWidth: 2,
         borderRadius: 16,
-        margin: 16,
-        paddingHorizontal: 16,
+        paddingHorizontal: 7,
+        marginRight: 7,
     },
     textInput: {
         fontSize: 16,
         letterSpacing: 0.5,
         color: COLORS.secondary,
+        marginLeft: 10,
     },
 });
 
