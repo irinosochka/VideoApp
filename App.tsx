@@ -34,13 +34,12 @@ const AppNavigator = () => (
 
                 return <IconComponent width={size} height={size} fill={color} />;
             },
-
-             tabBarActiveTintColor: COLORS.white,
-             tabBarInactiveTintColor: COLORS.secondary,
+            tabBarActiveTintColor: COLORS.white,
+            tabBarInactiveTintColor: COLORS.secondary,
         })}
     >
-        <AppTabs.Screen name="Home" component={MainScreen} />
-        <AppTabs.Screen name="Search" component={MainScreen} />
+        <AppTabs.Screen name="Home" component={MainScreen} options={{ headerShown: false }}/>
+        <AppTabs.Screen name="Search" component={MainScreen} options={{ headerShown: false }}/>
     </AppTabs.Navigator>
 );
 

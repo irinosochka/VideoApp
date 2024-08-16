@@ -1,11 +1,9 @@
 import React from 'react';
-import {View, StyleSheet, TextInput, ScrollView} from 'react-native';
+import {View, StyleSheet, TextInput, ScrollView, SafeAreaView} from 'react-native';
 import CategorySection from "../components/CategorySection";
-import {COLORS} from "../styles/constants";
+import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../assets/icons/search-icon.svg";
 import SettingsIcon from "../assets/icons/settings-icon.svg";
-
-
 
 const MainScreen = ({ navigation }: any) => {
 
@@ -31,7 +29,7 @@ const MainScreen = ({ navigation }: any) => {
     ];
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={{...FormStyles.SafeArea}}>
             <View style={styles.header}>
                 <View style={styles.searchBarContainer}>
                     <SearchIcon width={24} height={24} />
@@ -61,7 +59,7 @@ const MainScreen = ({ navigation }: any) => {
                     videos={videos}
                 />
             </ScrollView>
-        </View>
+        </SafeAreaView>
     );
 };
 

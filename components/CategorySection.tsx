@@ -18,7 +18,7 @@ interface CategorySectionProps {
 
 const CategorySection: React.FC<CategorySectionProps> = ({ categoryName, videos, onShowMore }) => {
     return (
-        <View style={styles.container}>
+        <>
             <View style={styles.header}>
                 <Text style={styles.categoryName}>{categoryName}</Text>
                 <TouchableOpacity onPress={onShowMore}>
@@ -38,14 +38,12 @@ const CategorySection: React.FC<CategorySectionProps> = ({ categoryName, videos,
                     />
                 )}
             />
-        </View>
+            <View style={styles.separator} />
+        </>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-
-    },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -69,6 +67,12 @@ const styles = StyleSheet.create({
     },
     flatListContent: {
         paddingRight: 16,
+    },
+    separator: {
+        height: 2,
+        backgroundColor: COLORS.secondary,
+        width: '100%',
+        marginVertical: 16,
     },
 });
 

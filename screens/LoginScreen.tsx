@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Linking} from 'react-native';
 import {COLORS, SIZES} from "../styles/constants";
 import {useAuth} from "../context/AuthContext";
 import LogoIcon from "../assets/logo.svg";
-import AppIcon from "../assets/app-icon.svg"
+import AppIcon from "../assets/app-icon.svg";
 
 const LoginScreen = ({ navigation }: any) => {
     const { login } = useAuth();
