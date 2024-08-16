@@ -31,11 +31,19 @@ const AppNavigator = () => (
                 } else if (route.name === 'Search') {
                     IconComponent = SearchIcon;
                 }
-
                 return <IconComponent width={size} height={size} fill={color} />;
             },
             tabBarActiveTintColor: COLORS.white,
             tabBarInactiveTintColor: COLORS.secondary,
+            tabBarStyle: {
+                backgroundColor: COLORS.primary,
+            },
+            tabBarLabelStyle: {
+                fontSize: 16,
+                lineHeight: 24,
+                fontWeight: '400',
+                letterSpacing: 0.1,
+            },
         })}
     >
         <AppTabs.Screen name="Home" component={MainScreen} options={{ headerShown: false }}/>

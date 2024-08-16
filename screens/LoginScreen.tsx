@@ -23,10 +23,10 @@ const LoginScreen = ({ navigation }: any) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.iconLogo}>
+            <View style={styles.iconContainer}>
                 <LogoIcon width={292} height={128}/>
             </View>
-            <View style={styles.iconApp}>
+            <View style={styles.appIconContainer}>
                 <AppIcon width={128} height={128}/>
             </View>
             <View style={styles.welcomeView}>
@@ -37,7 +37,7 @@ const LoginScreen = ({ navigation }: any) => {
             <TouchableOpacity style={styles.button} onPress={handleGuestLogin}>
                 <Text style={styles.buttonText}>Log in as guest</Text>
             </TouchableOpacity>
-            <View style={styles.policyView}>
+            <View style={styles.policyContainer}>
                 <Text style={styles.policyText}>
                     By continuing you agree with{'\n'}
                     <Text style={styles.link} onPress={openTerms}>
@@ -56,26 +56,20 @@ const LoginScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: COLORS.primary,
+        paddingHorizontal: 16,
+        paddingTop: 70,
     },
-    iconLogo: {
-        position: 'absolute',
-        top: 80,
-        left: 49,
+    iconContainer: {
+        marginBottom: 120,
     },
-    iconApp: {
-        position: 'absolute',
-        top: 328,
-        left: 132,
+    appIconContainer: {
+        marginBottom: 100,
     },
     welcomeView: {
-        width: SIZES.width,
-        height: 72,
-        position: 'absolute',
-        top: 589,
-        left: 32,
+        marginBottom: 40,
+        width: '100%',
     },
     welcomeText: {
         fontWeight: '600',
@@ -83,17 +77,16 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         letterSpacing: 1,
         color: COLORS.white,
+        textAlign: 'left',
     },
     button: {
         backgroundColor: COLORS.secondary,
-        width: SIZES.width,
+        width: '100%',
         height: 48,
-        position: 'absolute',
-        top: 693,
-        left: 32,
         borderRadius: 12,
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 20,
     },
     buttonText: {
         color: COLORS.white,
@@ -103,12 +96,8 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textAlign: 'center',
     },
-    policyView: {
-        width: 264,
-        height: 32,
-        position: 'absolute',
-        top: 765,
-        left: 64,
+    policyContainer: {
+        alignItems: 'center',
     },
     policyText: {
         color: COLORS.white,
