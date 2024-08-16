@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Linking, Image } from 'react-native';
-import {COLORS, FONTS, SIZES} from "../styles/constants";
+import {COLORS, SIZES} from "../styles/constants";
 import {useAuth} from "../context/AuthContext";
 
 const LoginScreen = ({ navigation }: any) => {
@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
         left: 32,
     },
     welcomeText: {
-        fontFamily: FONTS.fonts,
         fontWeight: '600',
         fontSize: 22,
         lineHeight: 24,
@@ -101,7 +100,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonText: {
-        fontFamily: FONTS.fonts,
         color: COLORS.white,
         fontSize: 16,
         lineHeight: 24,
@@ -118,7 +116,6 @@ const styles = StyleSheet.create({
     },
     policyText: {
         color: COLORS.white,
-        fontFamily: FONTS.fonts,
         fontWeight: '400',
         fontSize: 13,
         lineHeight: 16,

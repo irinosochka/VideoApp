@@ -6,10 +6,6 @@ interface Colors {
     link: string;
 }
 
-interface Fonts {
-    fonts: string;
-}
-
 interface Sizes {
     width: number;
 }
@@ -20,10 +16,6 @@ export const COLORS: Colors = {
     white: '#FFFFFF',
     black: '#000000',
     link: '#2B2D42',
-};
-
-export const FONTS: Fonts = {
-    fonts: 'Poppins',
 };
 
 export const SIZES: Sizes = {
