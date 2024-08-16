@@ -10,6 +10,7 @@ import {COLORS} from "./styles/constants";
 import HomeIcon from './assets/icons/home-icon.svg';
 import SearchIcon from './assets/icons/search-icon.svg';
 import SearchScreen from "./screens/SearchScreen";
+import VideoDetailScreen from "./screens/VideoDetailScreen";
 
 // Stack navigator for processing the auth flow
 const AuthStack = createNativeStackNavigator();
@@ -20,41 +21,51 @@ const AuthNavigator = () => (
 );
 
 // Bottom tab navigator
-const AppTabs = createBottomTabNavigator();
-const AppNavigator = () => (
-    <AppTabs.Navigator
-        screenOptions={({ route }) => ({
-            tabBarIcon: ({ color }) => {
-                let IconComponent;
-                const size = 32;
+const MainStack = createNativeStackNavigator();
 
-                if (route.name === 'Home') {
-                    IconComponent = HomeIcon;
-                } else if (route.name === 'Search') {
-                    IconComponent = SearchIcon;
-                }
-                return <IconComponent width={size} height={size} color={color} />;
-            },
-            tabBarActiveTintColor: COLORS.secondary,
-            tabBarInactiveTintColor: COLORS.white,
-            tabBarStyle: {
-                backgroundColor: COLORS.primary,
-                height: 80,
-                paddingVertical: 10,
-            },
-            tabBarLabelStyle: {
-                fontSize: 16,
-                fontWeight: '400',
-                letterSpacing: 0.1,
-                paddingTop: 7,
-            },
-        })}
-    >
-        <AppTabs.Screen name="Home" component={MainScreen} options={{ headerShown: false }}/>
-        <AppTabs.Screen name="Search" component={SearchScreen} options={{ headerShown: false }}/>
-    </AppTabs.Navigator>
+const SearchStackScreen = () => (
+    <MainStack.Navigator screenOptions={{ headerShown: false }}>
+        <MainStack.Screen name="SearchScreen" component={SearchScreen} />
+        <MainStack.Screen name="VideoDetailSearch" component={VideoDetailScreen} />
+    </MainStack.Navigator>
 );
 
+const AppTabs = createBottomTabNavigator();
+const AppNavigator = () => {
+    return (
+        <AppTabs.Navigator
+            screenOptions={({route}) => ({
+                tabBarIcon: ({color}) => {
+                    let IconComponent;
+                    const size = 32;
+
+                    if (route.name === 'Home') {
+                        IconComponent = HomeIcon;
+                    } else if (route.name === 'Search') {
+                        IconComponent = SearchIcon;
+                    }
+                    return <IconComponent width={size} height={size} color={color}/>;
+                },
+                tabBarActiveTintColor: COLORS.secondary,
+                tabBarInactiveTintColor: COLORS.white,
+                tabBarStyle: {
+                    backgroundColor: COLORS.primary,
+                    height: 80,
+                    paddingVertical: 10,
+                },
+                tabBarLabelStyle: {
+                    fontSize: 16,
+                    fontWeight: '400',
+                    letterSpacing: 0.1,
+                    paddingTop: 7,
+                },
+            })}
+        >
+            <AppTabs.Screen name="Home" component={MainScreen} options={{headerShown: false}}/>
+            <AppTabs.Screen name="Search" component={SearchStackScreen} options={{headerShown: false}}/>
+        </AppTabs.Navigator>
+    );
+};
 
 // Main stack navigator to switch between auth and main
 const RootStack = createNativeStackNavigator();

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {COLORS} from "../styles/constants";
+import {useNavigation} from "@react-navigation/native";
 
 interface VideoItemSearchProps {
     title: string;
@@ -10,15 +11,20 @@ interface VideoItemSearchProps {
 }
 
 const VideoItemSearch: React.FC<VideoItemSearchProps> = ({ title, link, date, channelName }) => {
+    const navigation = useNavigation();
+
     return (
-        <View style={styles.item}>
+        <TouchableOpacity
+            style={styles.item}
+            onPress={() => navigation.navigate('Search', { screen: 'VideoDetailSearch' })}
+        >
             <View style={styles.imageContainer}>
                 <Image source={{ uri: link }} style={styles.video} />
             </View>
             <Text style={styles.channelName}>{channelName}</Text>
             <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">{title}</Text>
             <Text style={styles.date}>{date}</Text>
-        </View>
+        </TouchableOpacity>
     );
 };
 
