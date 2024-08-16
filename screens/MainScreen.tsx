@@ -41,7 +41,7 @@ const MainScreen = ({ navigation }: any) => {
                 </View>
                 <SettingsIcon width={32} height={32}/>
             </View>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <CategorySection
                     categoryName="React Native"
                     videos={videos}

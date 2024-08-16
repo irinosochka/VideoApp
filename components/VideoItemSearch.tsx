@@ -2,19 +2,21 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import {COLORS} from "../styles/constants";
 
-interface VideoItemProps {
+interface VideoItemSearchProps {
     title: string;
     link: string;
     date: string;
+    channelName: string;
 }
 
-const VideoItem: React.FC<VideoItemProps> = ({ title, link, date }) => {
+const VideoItemSearch: React.FC<VideoItemSearchProps> = ({ title, link, date, channelName }) => {
     return (
         <View style={styles.item}>
             <View style={styles.imageContainer}>
                 <Image source={{ uri: link }} style={styles.video} />
             </View>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.channelName}>{channelName}</Text>
+            <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">{title}</Text>
             <Text style={styles.date}>{date}</Text>
         </View>
     );
@@ -22,14 +24,14 @@ const VideoItem: React.FC<VideoItemProps> = ({ title, link, date }) => {
 
 const styles = StyleSheet.create({
     item: {
-        width: 180,
         borderRadius: 16,
         overflow: 'hidden',
-        marginLeft: 16,
+        marginHorizontal: 16,
+        marginVertical: 7,
     },
     imageContainer: {
         width: '100%',
-        height: 112,
+        height: 200,
         overflow: 'hidden',
         borderRadius: 16,
     },
@@ -38,18 +40,28 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     title: {
-        fontSize: 12,
-        fontWeight: '500',
-        lineHeight: 24,
+        color: COLORS.secondary,
+        fontSize: 15,
+        fontWeight: '400',
         letterSpacing: 0.1,
+        marginHorizontal: 6,
+        lineHeight: 15,
     },
     date: {
         fontSize: 10,
         fontWeight: '400',
-        lineHeight: 24,
+        marginVertical: 12,
         color: COLORS.secondary,
         textAlign: 'right',
     },
+    channelName: {
+        color: COLORS.secondary,
+        fontSize: 12,
+        fontWeight: '700',
+        letterSpacing: 0.1,
+        marginHorizontal: 6,
+        marginVertical: 10,
+    },
 });
 
-export default VideoItem;
+export default VideoItemSearch;

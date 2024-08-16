@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Linking} from 'react-native';
-import {COLORS, SIZES} from "../styles/constants";
+import {COLORS} from "../styles/constants";
 import {useAuth} from "../context/AuthContext";
 import LogoIcon from "../assets/logo.svg";
 import AppIcon from "../assets/app-icon.svg";
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     welcomeText: {
         fontWeight: '600',
         fontSize: 22,
-        lineHeight: 24,
+        marginVertical: 6,
         letterSpacing: 1,
         color: COLORS.white,
         textAlign: 'left',
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         color: COLORS.white,
         fontWeight: '400',
         fontSize: 13,
-        lineHeight: 16,
+        marginVertical: 6,
         textAlign: 'center',
     },
     link: {

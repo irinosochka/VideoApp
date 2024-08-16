@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import VideoItem from './VideoItem';
+import VideoItemHome from './VideoItemHome';
 import {COLORS} from "../styles/constants";
 
 interface Video {
@@ -31,7 +31,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ categoryName, videos,
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
-                    <VideoItem
+                    <VideoItemHome
                         title={item.title}
                         link={item.link}
                         date={item.date}
@@ -53,14 +53,14 @@ const styles = StyleSheet.create({
     categoryName: {
         fontSize: 18,
         fontWeight: '600',
-        lineHeight: 24,
+        marginVertical: 6,
         letterSpacing: 0.5,
         color: COLORS.secondary,
     },
     showMore: {
         fontSize: 12,
         fontWeight: '400',
-        lineHeight: 24,
+        marginVertical: 6,
         letterSpacing: 0.5,
         color: COLORS.secondary,
         textDecorationLine: 'underline',

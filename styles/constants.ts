@@ -29,5 +29,6 @@ export const FormStyles = StyleSheet.create({
     SafeArea: {
         flex: 1,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 10 : 10,
+        width: '100%',
     },
 });
