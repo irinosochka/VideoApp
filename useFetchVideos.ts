@@ -18,6 +18,8 @@ const useFetchVideos = (query) => {
                 );
                 const data = await response.json();
 
+                console.log('API Response:', data);
+
                 const videos = data.items.map(item => ({
                     id: item.id.videoId,
                     channelName: item.snippet.channelTitle,
@@ -29,6 +31,7 @@ const useFetchVideos = (query) => {
                 setVideos(videos);
             } catch (error) {
                 setError(error);
+                console.error('Error fetching videos:', error);
             } finally {
                 setLoading(false);
             }

@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, TextInput, SafeAreaView, FlatList, Text, TouchableOpacity} from 'react-native';
 import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../assets/icons/search-icon.svg";
 import VideoItemSearch from "../components/VideoItemSearch";
 import useFetchVideos from "../useFetchVideos";
+import {useRoute} from "@react-navigation/native";
 
-const SearchScreen = ({ navigation }: any) => {
-    const { videos, loading, error } = useFetchVideos('React Native');
+const SearchScreen = () => {
+    const route = useRoute();
+    const { query } = route.params || {};
+    const { videos, loading, error } = useFetchVideos(query || '');
+
+    const [searchQuery, setSearchQuery] = useState<any>(query || '');
+
+    useEffect(() => {
+        if (query) {
+            setSearchQuery(query);
+        }
+    }, [query]);
 
     return (
         <SafeAreaView style={{...FormStyles.SafeArea}}>
@@ -16,12 +27,14 @@ const SearchScreen = ({ navigation }: any) => {
                     style={styles.textInput}
                     placeholder="Search videos"
                     placeholderTextColor="#2B2D4299"
+                    value={searchQuery}
+                    onChangeText={setSearchQuery}
                 />
             </View>
             <View style={styles.resultsContainer}>
                 <Text style={styles.resultsText}>1157 results found for: </Text>
                 <TouchableOpacity>
-                    <Text style={styles.searchingText}>"React Native"</Text>
+                    <Text style={styles.searchingText}>{searchQuery}</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.sortedContainer}>

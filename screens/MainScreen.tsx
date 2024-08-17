@@ -5,12 +5,22 @@ import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../assets/icons/search-icon.svg";
 import SettingsIcon from "../assets/icons/settings-icon.svg";
 import useFetchVideos from "../useFetchVideos";
+import {useNavigation} from "@react-navigation/native";
 
-const MainScreen = ({ navigation }: any) => {
+const MainScreen = () => {
+    const navigation = useNavigation();
+
     const { videos: reactNativeVideos } = useFetchVideos('React Native');
     const { videos: reactVideos } = useFetchVideos('React');
     const { videos: typescriptVideos } = useFetchVideos('Typescript');
     const { videos: javascriptVideos } = useFetchVideos('Javascript');
+
+    const handleShowMore = (categoryName) => {
+        navigation.navigate('Search', {
+            screen: 'SearchScreen',
+            params: { categoryName, query: categoryName },
+        });
+    };
 
     return (
         <SafeAreaView style={{...FormStyles.SafeArea}}>
@@ -29,18 +39,22 @@ const MainScreen = ({ navigation }: any) => {
                 <CategorySection
                     categoryName="React Native"
                     videos={reactNativeVideos}
+                    onShowMore={() => handleShowMore('React Native')}
                 />
                 <CategorySection
                     categoryName="React"
                     videos={reactVideos}
+                    onShowMore={() => handleShowMore('React')}
                 />
                 <CategorySection
                     categoryName="Typescript"
                     videos={typescriptVideos}
+                    onShowMore={() => handleShowMore('Typescript')}
                 />
                 <CategorySection
                     categoryName="Javascript"
                     videos={javascriptVideos}
+                    onShowMore={() => handleShowMore('Javascript')}
                 />
             </ScrollView>
         </SafeAreaView>

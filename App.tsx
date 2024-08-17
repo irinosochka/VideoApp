@@ -20,14 +20,21 @@ const AuthNavigator = () => (
     </AuthStack.Navigator>
 );
 
-// Bottom tab navigator
-const MainStack = createNativeStackNavigator();
+// Stack Navigator for Home
+const HomeStack = createNativeStackNavigator();
+const HomeStackScreen = () => (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+        <HomeStack.Screen name="MainScreen" component={MainScreen} />
+    </HomeStack.Navigator>
+);
 
+// Stack Navigator for Search
+const SearchStack = createNativeStackNavigator();
 const SearchStackScreen = () => (
-    <MainStack.Navigator screenOptions={{ headerShown: false }}>
-        <MainStack.Screen name="SearchScreen" component={SearchScreen} />
-        <MainStack.Screen name="VideoDetailSearch" component={VideoDetailScreen} />
-    </MainStack.Navigator>
+    <SearchStack.Navigator screenOptions={{ headerShown: false }}>
+        <SearchStack.Screen name="SearchScreen" component={SearchScreen} />
+        <SearchStack.Screen name="VideoDetailSearch" component={VideoDetailScreen} />
+    </SearchStack.Navigator>
 );
 
 const AppTabs = createBottomTabNavigator();
@@ -61,7 +68,7 @@ const AppNavigator = () => {
                 },
             })}
         >
-            <AppTabs.Screen name="Home" component={MainScreen} options={{headerShown: false}}/>
+            <AppTabs.Screen name="Home" component={HomeStackScreen} options={{headerShown: false}}/>
             <AppTabs.Screen name="Search" component={SearchStackScreen} options={{headerShown: false}}/>
         </AppTabs.Navigator>
     );
