@@ -18,8 +18,9 @@ const useFetchVideos = (query) => {
                 );
                 const data = await response.json();
 
-                const videos = data.items.slice(0, 5).map(item => ({
+                const videos = data.items.map(item => ({
                     id: item.id.videoId,
+                    channelName: item.snippet.channelTitle,
                     title: item.snippet.title,
                     link: item.snippet.thumbnails.high.url,
                     date: item.snippet.publishedAt,

@@ -3,32 +3,10 @@ import {View, StyleSheet, TextInput, SafeAreaView, FlatList, Text, TouchableOpac
 import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../assets/icons/search-icon.svg";
 import VideoItemSearch from "../components/VideoItemSearch";
+import useFetchVideos from "../useFetchVideos";
 
 const SearchScreen = ({ navigation }: any) => {
-
-    const videos = [
-        {
-            id: '1',
-            channelName: 'Channel name',
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            link: 'https://fakeimg.pl/345x200?text=VIDEO',
-            date: '01.01.2024',
-        },
-        {
-            id: '2',
-            channelName: 'Channel name',
-            link: 'https://fakeimg.pl/345x200?text=VIDEO',
-            date: '02.01.2024',
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        },
-        {
-            id: '3',
-            channelName: 'Channel name',
-            link: 'https://fakeimg.pl/345x200?text=VIDEO',
-            date: '03.01.2024',
-            title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        },
-    ];
+    const { videos, loading, error } = useFetchVideos('React Native');
 
     return (
         <SafeAreaView style={{...FormStyles.SafeArea}}>
@@ -53,19 +31,25 @@ const SearchScreen = ({ navigation }: any) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.flatListContainer}>
-                <FlatList
-                    showsVerticalScrollIndicator={false}
-                    data={videos}
-                    keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => (
-                        <VideoItemSearch
-                            title={item.title}
-                            link={item.link}
-                            date={item.date}
-                            channelName={item.channelName}
-                        />
-                    )}
-                />
+                {loading ? (
+                    <Text>Loading...</Text>
+                ) : error ? (
+                    <Text>Error loading videos</Text>
+                ) : (
+                    <FlatList
+                        showsVerticalScrollIndicator={false}
+                        data={videos}
+                        keyExtractor={(item, index) => index.toString()}
+                        renderItem={({ item }) => (
+                            <VideoItemSearch
+                                title={item.title}
+                                link={item.link}
+                                date={item.date}
+                                channelName={item.channelName}
+                            />
+                        )}
+                    />
+                )}
             </View>
         </SafeAreaView>
     );

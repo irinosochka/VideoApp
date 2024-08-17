@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {COLORS} from "../styles/constants";
 import {useNavigation} from "@react-navigation/native";
+import moment from "moment";
 
 interface VideoItemSearchProps {
     title: string;
@@ -9,6 +10,10 @@ interface VideoItemSearchProps {
     date: string;
     channelName: string;
 }
+
+const formatDate = (dateString: string) => {
+    return moment(dateString).format('DD.MM.YYYY');
+};
 
 const VideoItemSearch: React.FC<VideoItemSearchProps> = ({ title, link, date, channelName }) => {
     const navigation = useNavigation();
@@ -23,7 +28,7 @@ const VideoItemSearch: React.FC<VideoItemSearchProps> = ({ title, link, date, ch
             </View>
             <Text style={styles.channelName}>{channelName}</Text>
             <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">{title}</Text>
-            <Text style={styles.date}>{date}</Text>
+            <Text style={styles.date}>{formatDate(date)}</Text>
         </TouchableOpacity>
     );
 };

@@ -6,7 +6,7 @@ import SearchIcon from "../assets/icons/search-icon.svg";
 import SettingsIcon from "../assets/icons/settings-icon.svg";
 import useFetchVideos from "../useFetchVideos";
 
-const MainScreen = ({ }: any) => {
+const MainScreen = ({ navigation }: any) => {
     const { videos: reactNativeVideos } = useFetchVideos('React Native');
     const { videos: reactVideos } = useFetchVideos('React');
     const { videos: typescriptVideos } = useFetchVideos('Typescript');
