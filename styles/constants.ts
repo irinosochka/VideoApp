@@ -6,6 +6,7 @@ interface Colors {
     white: string;
     black: string;
     link: string;
+    lightGray : string;
 }
 
 export const COLORS: Colors = {
@@ -14,6 +15,7 @@ export const COLORS: Colors = {
     white: '#FFFFFF',
     black: '#000000',
     link: '#2B2D42',
+    lightGray: '#C8C8C8',
 };
 
 export const FormStyles = StyleSheet.create({

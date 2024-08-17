@@ -32,8 +32,9 @@ const HomeStackScreen = () => (
 const SearchStack = createNativeStackNavigator();
 const SearchStackScreen = () => (
     <SearchStack.Navigator screenOptions={{ headerShown: false }}>
-        <SearchStack.Screen name="SearchScreen" component={SearchScreen} />
+        {/*<SearchStack.Screen name="SearchScreen" component={SearchScreen} />*/}
         <SearchStack.Screen name="VideoDetailSearch" component={VideoDetailScreen} />
+        <SearchStack.Screen name="SearchScreen" component={SearchScreen} />
     </SearchStack.Navigator>
 );
 
@@ -42,7 +43,7 @@ const AppNavigator = () => {
     return (
         <AppTabs.Navigator
             screenOptions={({route}) => ({
-                tabBarIcon: ({color}) => {
+                tabBarIcon: ({color, focused}) => {
                     let IconComponent;
                     const size = 32;
 
@@ -51,7 +52,7 @@ const AppNavigator = () => {
                     } else if (route.name === 'Search') {
                         IconComponent = SearchIcon;
                     }
-                    return <IconComponent width={size} height={size} color={color}/>;
+                    return <IconComponent width={size} height={size} strokeColor={color}/>;
                 },
                 tabBarActiveTintColor: COLORS.secondary,
                 tabBarInactiveTintColor: COLORS.white,
