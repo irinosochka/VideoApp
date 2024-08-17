@@ -29,7 +29,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ categoryName, videos,
                 data={videos}
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item }) => (
                     <VideoItemHome
                         title={item.title}

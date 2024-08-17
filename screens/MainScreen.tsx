@@ -4,29 +4,13 @@ import CategorySection from "../components/CategorySection";
 import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../assets/icons/search-icon.svg";
 import SettingsIcon from "../assets/icons/settings-icon.svg";
+import useFetchVideos from "../useFetchVideos";
 
-const MainScreen = ({ navigation }: any) => {
-
-    const videos = [
-        {
-            id: '1',
-            title: 'React Native in 100 seconds',
-            link: 'https://fakeimg.pl/180x112?text=VIDEO',
-            date: '01.01.2024',
-        },
-        {
-            id: '2',
-            title: 'Introduction to React',
-            link: 'https://fakeimg.pl/180x112?text=VIDEO',
-            date: '02.01.2024',
-        },
-        {
-            id: '3',
-            title: 'Introduction',
-            link: 'https://fakeimg.pl/180x112?text=VIDEO',
-            date: '03.01.2024',
-        },
-    ];
+const MainScreen = ({ }: any) => {
+    const { videos: reactNativeVideos } = useFetchVideos('React Native');
+    const { videos: reactVideos } = useFetchVideos('React');
+    const { videos: typescriptVideos } = useFetchVideos('Typescript');
+    const { videos: javascriptVideos } = useFetchVideos('Javascript');
 
     return (
         <SafeAreaView style={{...FormStyles.SafeArea}}>
@@ -44,19 +28,19 @@ const MainScreen = ({ navigation }: any) => {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <CategorySection
                     categoryName="React Native"
-                    videos={videos}
+                    videos={reactNativeVideos}
                 />
                 <CategorySection
                     categoryName="React"
-                    videos={videos}
+                    videos={reactVideos}
                 />
                 <CategorySection
                     categoryName="Typescript"
-                    videos={videos}
+                    videos={typescriptVideos}
                 />
                 <CategorySection
                     categoryName="Javascript"
-                    videos={videos}
+                    videos={javascriptVideos}
                 />
             </ScrollView>
         </SafeAreaView>
