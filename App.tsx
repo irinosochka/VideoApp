@@ -57,7 +57,7 @@ const AppNavigator = () => {
                     fontSize: 16,
                     fontWeight: '400',
                     letterSpacing: 0.1,
-                    paddingTop: 7,
+                    paddingTop: 5,
                 },
             })}
         >

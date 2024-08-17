@@ -59,10 +59,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: COLORS.primary,
         paddingHorizontal: 16,
-        paddingTop: 70,
+        paddingTop: 60,
     },
     iconContainer: {
-        marginBottom: 120,
+        marginBottom: 110,
     },
     appIconContainer: {
         marginBottom: 100,
