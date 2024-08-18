@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API_KEY = 'AIzaSyAWV_m9v8BzoBIWK7spst8xS1mmqyogKiM';
+const API_KEY = 'AIzaSyBXZytoZXsm7N5wQ9PO8OvohgnwWD9S2gY';
 
 export interface Video {
     id: string;
