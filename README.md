@@ -18,35 +18,56 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+# Video App
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Prerequisites
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- [Node.js](https://nodejs.org/)
 
-## Get a fresh project
+## Technologies Used
 
-When you're ready, run:
+- React Native
+- Expo
+- TypeScript
 
-```bash
-npm run reset-project
-```
+## Installation
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. **Clone the repository**
 
-## Learn more
+   ```bash
+   git clone https://github.com/irinosochka/VideoApp.git
 
-To learn more about developing your project with Expo, look at the following resources:
+2. **Navigate to the project directory**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+   ```bash
+   cd VideoApp
 
-## Join the community
+3. **Install dependencies**
 
-Join our community of developers creating universal apps.
+   ```bash
+   npm install
+   ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+4. **Start the app**
+
+   ```bash
+    npx expo start
+   ```
+
+#### Login Screen
+![Login Screen](./screenshots/login.png)
+
+#### Main Screen
+![Main Screen](./screenshots/main.png)
+
+#### Search Screen
+![Search Screen](./screenshots/search.png)
+
+#### Video Details
+![Video Details](./screenshots/details.png)
+
+#### Settings Screen
+![Settings Screen](./screenshots/settings.png)
+
+#### Sort by Modal
+![Sort by Modal](./screenshots/sortModal.png)
