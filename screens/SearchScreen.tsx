@@ -4,14 +4,21 @@ import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../assets/icons/search-icon.svg";
 import VideoItemSearch from "../components/VideoItemSearch";
 import useFetchVideos from "../useFetchVideos";
-import {useRoute} from "@react-navigation/native";
+import {useNavigation, useRoute} from "@react-navigation/native";
 
 const SearchScreen = () => {
     const route = useRoute();
+    const navigation = useNavigation();
     const { query } = route.params || {};
-    const { videos, loading, error } = useFetchVideos(query || '');
-
     const [searchQuery, setSearchQuery] = useState<any>(query || '');
+
+    const { videos, loading, error } = useFetchVideos(searchQuery);
+
+    const handleSearchSubmit = () => {
+        if (searchQuery.trim()) {
+            navigation.setParams({ query: searchQuery.trim() });
+        }
+    };
 
     useEffect(() => {
         if (query) {
@@ -29,6 +36,7 @@ const SearchScreen = () => {
                     placeholderTextColor="#2B2D4299"
                     value={searchQuery}
                     onChangeText={setSearchQuery}
+                    onSubmitEditing={handleSearchSubmit}
                 />
             </View>
             <View style={styles.resultsContainer}>

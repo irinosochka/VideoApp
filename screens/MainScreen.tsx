@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, TextInput, ScrollView, SafeAreaView} from 'react-native';
 import CategorySection from "../components/CategorySection";
 import {COLORS, FormStyles} from "../styles/constants";
@@ -10,10 +10,20 @@ import {useNavigation} from "@react-navigation/native";
 const MainScreen = () => {
     const navigation = useNavigation();
 
+    const [searchQuery, setSearchQuery] = useState('');
     const { videos: reactNativeVideos } = useFetchVideos('React Native');
     const { videos: reactVideos } = useFetchVideos('React');
     const { videos: typescriptVideos } = useFetchVideos('Typescript');
     const { videos: javascriptVideos } = useFetchVideos('Javascript');
+
+    const handleSearchSubmit = () => {
+        if (searchQuery.trim()) {
+            navigation.navigate('Search', {
+                screen: 'SearchScreen',
+                params: { query: searchQuery.trim() },
+            });
+        }
+    };
 
     const handleShowMore = (categoryName) => {
         navigation.navigate('Search', {
@@ -31,6 +41,9 @@ const MainScreen = () => {
                         style={styles.textInput}
                         placeholder="Search videos"
                         placeholderTextColor="#2B2D4299"
+                        value={searchQuery}
+                        onChangeText={setSearchQuery}
+                        onSubmitEditing={handleSearchSubmit}
                     />
                 </View>
                 <SettingsIcon width={32} height={32}/>
