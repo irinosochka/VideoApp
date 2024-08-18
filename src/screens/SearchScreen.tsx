@@ -36,6 +36,19 @@ const SearchScreen = () => {
         closeSortModal();
     };
 
+    const sortVideos = (videos: any[]) => {
+        switch (sortOption) {
+            case 'Upload date: latest':
+                return videos.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+            case 'Upload date: oldest':
+                return videos.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            default:
+                return videos;
+        }
+    };
+
+    const sortedVideos = sortVideos(videos);
+
     useEffect(() => {
         if (query) {
             setSearchQuery(query);
@@ -75,7 +88,7 @@ const SearchScreen = () => {
                 ) : (
                     <FlatList
                         showsVerticalScrollIndicator={false}
-                        data={videos}
+                        data={sortedVideos}
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => (
                             <VideoItemSearch
