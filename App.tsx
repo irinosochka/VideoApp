@@ -11,6 +11,7 @@ import HomeIcon from './assets/icons/home-icon.svg';
 import SearchIcon from './assets/icons/search-icon.svg';
 import SearchScreen from "./src/screens/SearchScreen";
 import VideoDetailScreen from "./src/screens/VideoDetailScreen";
+import SettingsScreen from "./src/screens/SettingsScreen";
 
 // Stack navigator for processing the auth flow
 const AuthStack = createNativeStackNavigator();
@@ -25,6 +26,7 @@ const HomeStack = createNativeStackNavigator();
 const HomeStackScreen = () => (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
         <HomeStack.Screen name="MainScreen" component={MainScreen} />
+        <HomeStack.Screen name="SettingsScreen" component={SettingsScreen} />
     </HomeStack.Navigator>
 );
 
@@ -52,7 +54,7 @@ const AppNavigator = () => {
                     } else if (route.name === 'Search') {
                         IconComponent = SearchIcon;
                     }
-                    return <IconComponent width={size} height={size} strokeColor={color}/>;
+                    return <IconComponent width={size} height={size} stroke={color}/>;
                 },
                 tabBarActiveTintColor: COLORS.secondary,
                 tabBarInactiveTintColor: COLORS.white,

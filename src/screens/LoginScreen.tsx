@@ -6,7 +6,7 @@ import LogoIcon from "../../assets/logo.svg";
 import AppIcon from "../../assets/app-icon.svg";
 import TermsOfServiceModal from "../components/TermsOfServiceModal";
 
-const LoginScreen = ({ navigation }: any) => {
+const LoginScreen: React.FC = ({navigation}) => {
     const [showTerms, setShowTerms] = useState(false);
     const { login } = useAuth();
 

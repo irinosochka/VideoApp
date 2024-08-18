@@ -6,7 +6,7 @@ import ViewsIcon from "../../assets/icons/views-icon.svg";
 import LikesIcon from "../../assets/icons/likes-icon.svg";
 import VideoPlayer from "../components/VideoPlayer";
 
-const VideoDetailScreen = () => {
+const VideoDetailScreen: React.FC = () => {
     const background = require('../../assets/video/broadchurch.mp4');
     const [activeTab, setActiveTab] = useState('Details');
 

@@ -7,7 +7,7 @@ import useFetchVideos from "../useFetchVideos";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import SortModal from "../components/SortModal";
 
-const SearchScreen = () => {
+const SearchScreen: React.FC = () => {
     const route = useRoute();
     const navigation = useNavigation();
     const { query } = route.params || {};

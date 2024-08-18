@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, TextInput, ScrollView, SafeAreaView} from 'react-native';
+import {View, StyleSheet, TextInput, ScrollView, SafeAreaView, TouchableOpacity} from 'react-native';
 import CategorySection from "../components/CategorySection";
 import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../../assets/icons/search-icon.svg";
@@ -7,7 +7,7 @@ import SettingsIcon from "../../assets/icons/settings-icon.svg";
 import useFetchVideos from "../useFetchVideos";
 import {useNavigation} from "@react-navigation/native";
 
-const MainScreen = () => {
+const MainScreen: React.FC = () => {
     const navigation = useNavigation();
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -32,6 +32,10 @@ const MainScreen = () => {
         });
     };
 
+    const handleNavigateToSettings = () => {
+        navigation.navigate('SettingsScreen');
+    };
+
     return (
         <SafeAreaView style={{...FormStyles.SafeArea}}>
             <View style={styles.header}>
@@ -46,7 +50,9 @@ const MainScreen = () => {
                         onSubmitEditing={handleSearchSubmit}
                     />
                 </View>
-                <SettingsIcon width={32} height={32}/>
+                <TouchableOpacity onPress={handleNavigateToSettings}>
+                    <SettingsIcon width={32} height={32}/>
+                </TouchableOpacity>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <CategorySection
