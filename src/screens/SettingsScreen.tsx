@@ -38,7 +38,7 @@ const SettingsScreen: React.FC = () => {
                         <Text style={styles.reminderTimeText}>12:00</Text>
                     </View>
                     <Switch
-                        trackColor={{ false: COLORS.primary, true: COLORS.secondary }}
+                        trackColor={{ false: COLORS.secondary, true: COLORS.primary }}
                         thumbColor={isReminderEnabled ? COLORS.white : COLORS.white}
                         ios_backgroundColor={COLORS.secondary}
                         onValueChange={toggleSwitch}

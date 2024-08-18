@@ -54,7 +54,7 @@ const AppNavigator = () => {
                     } else if (route.name === 'Search') {
                         IconComponent = SearchIcon;
                     }
-                    return <IconComponent width={size} height={size} stroke={color}/>;
+                    return <IconComponent width={size} height={size} style={{color:color}}/>;
                 },
                 tabBarActiveTintColor: COLORS.secondary,
                 tabBarInactiveTintColor: COLORS.white,

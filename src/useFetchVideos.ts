@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API_KEY = 'AIzaSyATa7_vT4EXo-PLWkqPse2v4aOykbTPYKA';
+const API_KEY = 'AIzaSyAWV_m9v8BzoBIWK7spst8xS1mmqyogKiM';
 
 const useFetchVideos = (query) => {
     const [videos, setVideos] = useState([]);
