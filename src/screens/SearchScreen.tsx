@@ -3,17 +3,18 @@ import {View, StyleSheet, TextInput, SafeAreaView, FlatList, Text, TouchableOpac
 import {COLORS, FormStyles} from "../styles/constants";
 import SearchIcon from "../../assets/icons/search-icon.svg";
 import VideoItemSearch from "../components/VideoItemSearch";
-import useFetchVideos from "../useFetchVideos";
+import useFetchVideos, {Video} from "../useFetchVideos";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import SortModal from "../components/SortModal";
 
 const SearchScreen: React.FC = () => {
-    const route = useRoute();
-    const navigation = useNavigation();
-    const { query } = route.params || {};
-    const [searchQuery, setSearchQuery] = useState<any>(query || '');
-    const [sortModalVisible, setSortModalVisible] = useState(false);
-    const [sortOption, setSortOption] = useState('Most popular');
+    const route = useRoute<any>();
+    const navigation = useNavigation<any>()
+
+    const query = route.params?.query || '';
+    const [searchQuery, setSearchQuery] = useState<string>(query);
+    const [sortModalVisible, setSortModalVisible] = useState<boolean>(false);
+    const [sortOption, setSortOption] = useState<string>('Most popular');
 
     const { videos, loading, error } = useFetchVideos(searchQuery);
 
@@ -36,12 +37,12 @@ const SearchScreen: React.FC = () => {
         closeSortModal();
     };
 
-    const sortVideos = (videos: any[]) => {
+    const sortVideos = (videos: Video[]): Video[] => {
         switch (sortOption) {
             case 'Upload date: latest':
-                return videos.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+                return [...videos].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
             case 'Upload date: oldest':
-                return videos.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+                return [...videos].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
             default:
                 return videos;
         }

@@ -15,14 +15,14 @@ import { COLORS } from "../styles/constants";
 import {useNavigation} from "@react-navigation/native";
 
 const VideoPlayer = ({ source }) => {
-    const videoRef = useRef(null);
+    const videoRef = useRef<any>(null);
     const navigation = useNavigation();
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
-    const [muted, setMuted] = useState(false);
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [currentTime, setCurrentTime] = useState<number>(0);
+    const [duration, setDuration] = useState<number>(0);
+    const [muted, setMuted] = useState<boolean>(false);
 
-    const formatTime = (timeInSeconds) => {
+    const formatTime = (timeInSeconds: number): string => {
         const duration = moment.duration(timeInSeconds, 'seconds');
         if (duration.hours() > 0) {
             return moment.utc(duration.asMilliseconds()).format("HH:mm:ss");

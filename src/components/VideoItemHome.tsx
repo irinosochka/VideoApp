@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {COLORS} from "../styles/constants";
 import moment from "moment";
+import {useNavigation} from "@react-navigation/native";
 
 interface VideoItemHomeProps {
     title: string;
@@ -9,19 +10,22 @@ interface VideoItemHomeProps {
     date: string;
 }
 
-const formatDate = (dateString: string) => {
+const formatDate = (dateString: string): string => {
     return moment(dateString).format('DD.MM.YYYY');
 };
 
 const VideoItemHome: React.FC<VideoItemHomeProps> = ({ title, link, date }) => {
+    const navigation = useNavigation<any>();
+
     return (
-        <View style={styles.item}>
+        <TouchableOpacity style={styles.item}
+                          onPress={() => navigation.navigate('Search', { screen: 'VideoDetailSearch' })}>
             <View style={styles.imageContainer}>
                 <Image source={{ uri: link }} style={styles.video} />
             </View>
             <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">{title}</Text>
             <Text style={styles.date}>{formatDate(date)}</Text>
-        </View>
+        </TouchableOpacity>
     );
 };
 

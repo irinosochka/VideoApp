@@ -2,10 +2,18 @@ import { useState, useEffect } from 'react';
 
 const API_KEY = 'AIzaSyAWV_m9v8BzoBIWK7spst8xS1mmqyogKiM';
 
-const useFetchVideos = (query) => {
-    const [videos, setVideos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+export interface Video {
+    id: string;
+    channelName: string;
+    title: string;
+    link: string;
+    date: string;
+}
+
+const useFetchVideos = (query: string) => {
+    const [videos, setVideos] = useState<Video[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<any>(null);
 
     useEffect(() => {
         const fetchVideos = async () => {
@@ -20,7 +28,7 @@ const useFetchVideos = (query) => {
 
                 // console.log('API Response:', data);
 
-                const videos = data.items.map(item => ({
+                const videos = data.items.map((item: any) => ({
                     id: item.id.videoId,
                     channelName: item.snippet.channelTitle,
                     title: item.snippet.title,
@@ -30,7 +38,7 @@ const useFetchVideos = (query) => {
 
                 setVideos(videos);
             } catch (error) {
-                setError(error);
+                setError(error as Error);
                 console.error('Error fetching videos:', error);
             } finally {
                 setLoading(false);

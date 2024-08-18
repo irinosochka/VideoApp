@@ -8,9 +8,9 @@ import useFetchVideos from "../useFetchVideos";
 import {useNavigation} from "@react-navigation/native";
 
 const MainScreen: React.FC = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>()
 
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState<string>('');
     const { videos: reactNativeVideos } = useFetchVideos('React Native');
     const { videos: reactVideos } = useFetchVideos('React');
     const { videos: typescriptVideos } = useFetchVideos('Typescript');
@@ -25,7 +25,7 @@ const MainScreen: React.FC = () => {
         }
     };
 
-    const handleShowMore = (categoryName) => {
+    const handleShowMore = (categoryName: string) => {
         navigation.navigate('Search', {
             screen: 'SearchScreen',
             params: { categoryName, query: categoryName },

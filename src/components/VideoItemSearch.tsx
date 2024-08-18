@@ -11,12 +11,12 @@ interface VideoItemSearchProps {
     channelName: string;
 }
 
-const formatDate = (dateString: string) => {
+const formatDate = (dateString: string): string => {
     return moment(dateString).format('DD.MM.YYYY');
 };
 
 const VideoItemSearch: React.FC<VideoItemSearchProps> = ({ title, link, date, channelName }) => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>()
 
     return (
         <TouchableOpacity

@@ -10,7 +10,7 @@ import ClockIcon from "../../assets/icons/clock-icon.svg";
 const SettingsScreen: React.FC = () => {
     const [isReminderEnabled, setIsReminderEnabled] = useState<boolean>(false);
     const toggleSwitch = () => setIsReminderEnabled(previousState => !previousState);
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>()
 
     return (
         <SafeAreaView style={{...FormStyles.SafeArea}}>

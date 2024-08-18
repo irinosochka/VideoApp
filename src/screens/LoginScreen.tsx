@@ -5,9 +5,11 @@ import {useAuth} from "../context/AuthContext";
 import LogoIcon from "../../assets/logo.svg";
 import AppIcon from "../../assets/app-icon.svg";
 import TermsOfServiceModal from "../components/TermsOfServiceModal";
+import {useNavigation} from "@react-navigation/native";
 
-const LoginScreen: React.FC = ({navigation}) => {
-    const [showTerms, setShowTerms] = useState(false);
+const LoginScreen: React.FC = () => {
+    const navigation = useNavigation<any>();
+    const [showTerms, setShowTerms] = useState<boolean>(false);
     const { login } = useAuth();
 
     const handleGuestLogin = () => {
