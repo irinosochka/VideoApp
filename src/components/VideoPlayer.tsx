@@ -1,20 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import Video from 'react-native-video';
-import PlayIcon from '../assets/icons/play-icon.svg';
-import PauseIcon from '../assets/icons/pause-icon.svg';
-import ForwardIcon from '../assets/icons/forward-icon.svg';
-import BackwardIcon from '../assets/icons/backward-icon.svg';
-import VolumeIcon from '../assets/icons/volume-icon.svg';
-import MuteVolumeIcon from '../assets/icons/mute-volume-icon.svg';
-import BackIcon from '../assets/icons/leftarrow-icon.svg';
-import FullScreenIcon from '../assets/icons/fullscreen-icon.svg';
-import AirplayIcon from '../assets/icons/airplay-icon.svg';
+import PlayIcon from '../../assets/icons/play-icon.svg';
+import PauseIcon from '../../assets/icons/pause-icon.svg';
+import ForwardIcon from '../../assets/icons/forward-icon.svg';
+import BackwardIcon from '../../assets/icons/backward-icon.svg';
+import VolumeIcon from '../../assets/icons/volume-icon.svg';
+import MuteVolumeIcon from '../../assets/icons/mute-volume-icon.svg';
+import BackIcon from '../../assets/icons/leftarrow-icon.svg';
+import FullScreenIcon from '../../assets/icons/fullscreen-icon.svg';
+import AirplayIcon from '../../assets/icons/airplay-icon.svg';
 import moment from "moment";
 import { COLORS } from "../styles/constants";
+import {useNavigation} from "@react-navigation/native";
 
 const VideoPlayer = ({ source }) => {
     const videoRef = useRef(null);
+    const navigation = useNavigation();
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -42,6 +44,10 @@ const VideoPlayer = ({ source }) => {
 
     const onMutePress = () => {
         setMuted(!muted);
+    };
+
+    const onBackPress = () => {
+        navigation.goBack();
     };
 
     return (
@@ -93,7 +99,7 @@ const VideoPlayer = ({ source }) => {
                     <AirplayIcon width={20} height={20} />
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.backButton}>
+            <TouchableOpacity onPress={onBackPress} style={styles.backButton}>
                 <View style={styles.circle}>
                     <BackIcon width={20} height={20} />
                 </View>

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {View, StyleSheet, TextInput, ScrollView, SafeAreaView} from 'react-native';
 import CategorySection from "../components/CategorySection";
 import {COLORS, FormStyles} from "../styles/constants";
-import SearchIcon from "../assets/icons/search-icon.svg";
-import SettingsIcon from "../assets/icons/settings-icon.svg";
+import SearchIcon from "../../assets/icons/search-icon.svg";
+import SettingsIcon from "../../assets/icons/settings-icon.svg";
 import useFetchVideos from "../useFetchVideos";
 import {useNavigation} from "@react-navigation/native";
 

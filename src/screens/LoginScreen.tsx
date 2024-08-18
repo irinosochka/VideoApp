@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {COLORS} from "../styles/constants";
 import {useAuth} from "../context/AuthContext";
-import LogoIcon from "../assets/logo.svg";
-import AppIcon from "../assets/app-icon.svg";
+import LogoIcon from "../../assets/logo.svg";
+import AppIcon from "../../assets/app-icon.svg";
 import TermsOfServiceModal from "../components/TermsOfServiceModal";
 
 const LoginScreen = ({ navigation }: any) => {

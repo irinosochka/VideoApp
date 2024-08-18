@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import { COLORS, FormStyles } from '../styles/constants';
-import PersonIcon from "../assets/icons/person-icon.svg";
-import ViewsIcon from "../assets/icons/views-icon.svg";
-import LikesIcon from "../assets/icons/likes-icon.svg";
+import PersonIcon from "../../assets/icons/person-icon.svg";
+import ViewsIcon from "../../assets/icons/views-icon.svg";
+import LikesIcon from "../../assets/icons/likes-icon.svg";
 import VideoPlayer from "../components/VideoPlayer";
 
 const VideoDetailScreen = () => {
-    const background = require('../assets/video/broadchurch.mp4');
+    const background = require('../../assets/video/broadchurch.mp4');
     const [activeTab, setActiveTab] = useState('Details');
 
     return (

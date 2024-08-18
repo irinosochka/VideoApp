@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, TextInput, SafeAreaView, FlatList, Text, TouchableOpacity} from 'react-native';
 import {COLORS, FormStyles} from "../styles/constants";
-import SearchIcon from "../assets/icons/search-icon.svg";
+import SearchIcon from "../../assets/icons/search-icon.svg";
 import VideoItemSearch from "../components/VideoItemSearch";
 import useFetchVideos from "../useFetchVideos";
 import {useNavigation, useRoute} from "@react-navigation/native";

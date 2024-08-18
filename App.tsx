@@ -3,14 +3,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import 'react-native-screens';
-import LoginScreen from "./screens/LoginScreen";
-import MainScreen from "./screens/MainScreen";
-import {AuthProvider, useAuth} from "./context/AuthContext";
-import {COLORS} from "./styles/constants";
+import LoginScreen from "./src/screens/LoginScreen";
+import MainScreen from "./src/screens/MainScreen";
+import {AuthProvider, useAuth} from "./src/context/AuthContext";
+import {COLORS} from "./src/styles/constants";
 import HomeIcon from './assets/icons/home-icon.svg';
 import SearchIcon from './assets/icons/search-icon.svg';
-import SearchScreen from "./screens/SearchScreen";
-import VideoDetailScreen from "./screens/VideoDetailScreen";
+import SearchScreen from "./src/screens/SearchScreen";
+import VideoDetailScreen from "./src/screens/VideoDetailScreen";
 
 // Stack navigator for processing the auth flow
 const AuthStack = createNativeStackNavigator();
@@ -43,7 +43,7 @@ const AppNavigator = () => {
     return (
         <AppTabs.Navigator
             screenOptions={({route}) => ({
-                tabBarIcon: ({color, focused}) => {
+                tabBarIcon: ({color}) => {
                     let IconComponent;
                     const size = 32;
 
