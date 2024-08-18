@@ -33,18 +33,18 @@ const VideoDetailScreen = () => {
                 </View>
                 <View style={styles.tabsWrapper}>
                     <TouchableOpacity
-                        style={[styles.tabContainer, activeTab === 'Details' && styles.activeTab]}
+                        style={styles.tabContainer}
                         onPress={() => setActiveTab('Details')}
                     >
                         <Text style={styles.tabText}>Details</Text>
-                        {activeTab === 'Details' && <View style={styles.underlineActive} />}
+                        <View style={activeTab === 'Details' ? styles.underlineActive : styles.underlineInactive} />
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={[styles.tabContainer, activeTab === 'Notes' && styles.activeTab]}
+                        style={styles.tabContainer}
                         onPress={() => setActiveTab('Notes')}
                     >
                         <Text style={styles.tabText}>Notes</Text>
-                        {activeTab === 'Notes' && <View style={styles.underlineActive} />}
+                        <View style={activeTab === 'Notes' ? styles.underlineActive : styles.underlineInactive} />
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.subtitle}>Description</Text>
@@ -130,34 +130,32 @@ const styles = StyleSheet.create({
     tabContainer: {
         alignItems: 'center',
         paddingVertical: 8,
-        flexDirection: 'row',
+        flexDirection: 'column',
         position: 'relative',
+        flex: 1,
     },
     tabText: {
         fontSize: 12,
         fontWeight: '600',
         color: COLORS.secondary,
     },
-    underline: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
+    underlineActive: {
+        width: '100%',
+        height: 2,
+        backgroundColor: COLORS.secondary,
+        marginTop: 4,
+    },
+    underlineInactive: {
         width: '100%',
         height: 2,
         backgroundColor: COLORS.lightGray,
-    },
-    underlineActive: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        width: '100%',
-        height: 2,
-        backgroundColor: COLORS.primary,
+        marginTop: 4,
     },
     description: {
         fontSize: 12,
         color: COLORS.secondary,
         marginBottom: 16,
+        lineHeight: 12,
         letterSpacing: 0.1,
         fontWeight: '400',
     },
