@@ -18,7 +18,7 @@ const useFetchVideos = (query) => {
                 );
                 const data = await response.json();
 
-                console.log('API Response:', data);
+                // console.log('API Response:', data);
 
                 const videos = data.items.map(item => ({
                     id: item.id.videoId,

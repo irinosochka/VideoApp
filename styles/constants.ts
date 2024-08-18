@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native';
+import {Platform, StatusBar, StyleSheet} from 'react-native';
 
 interface Colors {
     primary: string;
@@ -21,7 +21,7 @@ export const COLORS: Colors = {
 export const FormStyles = StyleSheet.create({
     SafeArea: {
         flex: 1,
-        // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 10 : 10,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 5 : 5,
         width: '100%',
         backgroundColor: COLORS.white
     },
