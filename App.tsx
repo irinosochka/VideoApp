@@ -32,9 +32,9 @@ const HomeStackScreen = () => (
 const SearchStack = createNativeStackNavigator();
 const SearchStackScreen = () => (
     <SearchStack.Navigator screenOptions={{ headerShown: false }}>
-        {/*<SearchStack.Screen name="SearchScreen" component={SearchScreen} />*/}
-        <SearchStack.Screen name="VideoDetailSearch" component={VideoDetailScreen} />
         <SearchStack.Screen name="SearchScreen" component={SearchScreen} />
+        <SearchStack.Screen name="VideoDetailSearch" component={VideoDetailScreen} />
+        {/*<SearchStack.Screen name="SearchScreen" component={SearchScreen} />*/}
     </SearchStack.Navigator>
 );
 

@@ -5,12 +5,15 @@ import SearchIcon from "../../assets/icons/search-icon.svg";
 import VideoItemSearch from "../components/VideoItemSearch";
 import useFetchVideos from "../useFetchVideos";
 import {useNavigation, useRoute} from "@react-navigation/native";
+import SortModal from "../components/SortModal";
 
 const SearchScreen = () => {
     const route = useRoute();
     const navigation = useNavigation();
     const { query } = route.params || {};
     const [searchQuery, setSearchQuery] = useState<any>(query || '');
+    const [sortModalVisible, setSortModalVisible] = useState(false);
+    const [sortOption, setSortOption] = useState('Most popular');
 
     const { videos, loading, error } = useFetchVideos(searchQuery);
 
@@ -18,6 +21,19 @@ const SearchScreen = () => {
         if (searchQuery.trim()) {
             navigation.setParams({ query: searchQuery.trim() });
         }
+    };
+
+    const openSortModal = () => {
+        setSortModalVisible(true);
+    };
+
+    const closeSortModal = () => {
+        setSortModalVisible(false);
+    };
+
+    const handleSortOptionChange = (option: string) => {
+        setSortOption(option);
+        closeSortModal();
     };
 
     useEffect(() => {
@@ -46,9 +62,9 @@ const SearchScreen = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.sortedContainer}>
-                <Text style={styles.sortText}>Sort by:</Text>
-                <TouchableOpacity>
-                    <Text style={styles.sortTextButton}> Most popular</Text>
+                <Text style={styles.sortText}>Sort by: </Text>
+                <TouchableOpacity  onPress={openSortModal}>
+                    <Text style={styles.sortTextButton}>{sortOption}</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.flatListContainer}>
@@ -72,6 +88,12 @@ const SearchScreen = () => {
                     />
                 )}
             </View>
+            <SortModal
+                visible={sortModalVisible}
+                onClose={closeSortModal}
+                selectedOption={sortOption}
+                onSelectOption={handleSortOptionChange}
+            />
         </SafeAreaView>
     );
 };
