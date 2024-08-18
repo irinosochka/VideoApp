@@ -1,24 +1,18 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Linking} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {COLORS} from "../styles/constants";
 import {useAuth} from "../context/AuthContext";
 import LogoIcon from "../assets/logo.svg";
 import AppIcon from "../assets/app-icon.svg";
+import TermsOfServiceModal from "../components/TermsOfServiceModal";
 
 const LoginScreen = ({ navigation }: any) => {
+    const [showTerms, setShowTerms] = useState(false);
     const { login } = useAuth();
 
     const handleGuestLogin = () => {
         login(); // Update login state
         setTimeout(() => navigation.navigate('App'), 100); //navigate after delay to be sure that the state has been changed
-    };
-
-    const openTerms = () => {
-        Linking.openURL('');
-    };
-
-    const openPrivacyPolicy = () => {
-        Linking.openURL('');
     };
 
     return (
@@ -40,15 +34,16 @@ const LoginScreen = ({ navigation }: any) => {
             <View style={styles.policyContainer}>
                 <Text style={styles.policyText}>
                     By continuing you agree with{'\n'}
-                    <Text style={styles.link} onPress={openTerms}>
-                       Terms and Conditions
+                    <Text style={styles.link} onPress={() => setShowTerms(true)}>
+                        Terms and Conditions
                     </Text>{' '}
                     and{' '}
-                    <Text style={styles.link} onPress={openPrivacyPolicy}>
+                    <Text style={styles.link} onPress={() => setShowTerms(true)}>
                         Privacy Policy
                     </Text>
                 </Text>
             </View>
+            <TermsOfServiceModal visible={showTerms} onClose={() => setShowTerms(false)} />
         </View>
     );
 };
