@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const API_KEY = 'AIzaSyBXZytoZXsm7N5wQ9PO8OvohgnwWD9S2gY';
+require('dotenv').config();
+const API_KEY = process.env.API_KEY;
 
 export interface Video {
     id: string;

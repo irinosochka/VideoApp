@@ -12,6 +12,7 @@
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
     "axios": "^1.7.4",
+    "dotenv": "^16.4.5",
     "expo": "~51.0.28",
     "expo-dev-client": "~4.0.23",
     "expo-notifications": "~0.28.15",
